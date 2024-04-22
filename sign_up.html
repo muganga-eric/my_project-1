@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <form action="insert.php" method=POST>
+        <div class="div" style="left: 1000px;">
+            <img id="preview" src="#" alt="Preview Image" class="img" style="display:none;">
+        </div>
+        <input type="file" name="image" id="imageInput" accept="image/*"><br><br>
+            <br>
+            
+        
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <input type="submit" value="submit">
+    </form>
+  </div>
+  <script>
+    // Function to display the selected image
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var preview = document.getElementById('preview');
+            preview.src = reader.result;
+            preview.style.display = "block";
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // Event listener for file input change
+    var fileInput = document.getElementById('imageInput');
+    fileInput.addEventListener('change', previewImage);
+    </script>
+</body>
+</html>
